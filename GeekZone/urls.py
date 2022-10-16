@@ -1,73 +1,25 @@
-from django.urls import path, include
 from django.contrib import admin
-
-from django . http import HttpResponse
-
-def home(request):
-    return HttpResponse("Welcome to Home Page")
-def shop(request):
-    return HttpResponse("Welcome to Shop Page")
-def about(request):
-    return HttpResponse("Describe our website")
-def search(request):
-    return HttpResponse("Welcome to Search Page")
-def cart(request):
-    return HttpResponse("Welcome to Cart Page")
-def login(request):
-    return HttpResponse("login and registration page")
-def categories(request):
-    return HttpResponse("Show all categories")
-def contact(request):
-    return HttpResponse("Show our phone number")
-def dashboard(request):
-    return HttpResponse("Show some importance part")
-def registration(request):
-    return HttpResponse("when you have not to a account our website")
-def forget_password(request):
-    return HttpResponse("when you forget your password")
-def order(request):
-    return HttpResponse("customer order list")
-def exchange(request):
-    return HttpResponse("customer exchange his product")
-def payment(request):
-    return HttpResponse("save payment method")
-def Account(request):
-    return HttpResponse("Account details")
-def settings(request):
-    return HttpResponse("settings")
-def smartphone(request):
-    return HttpResponse("smartphone")
-def computer(request):
-    return HttpResponse("computer")
-def accessories(request):
-    return HttpResponse("accessories")
-def smart_watch(request):
-    return HttpResponse("smart_watch")
-
+from django.urls import path
+import polls.views as polls_views
 
 urlpatterns = [
-    path('', include('polls.urls')),
     path('admin/', admin.site.urls),
-    path('', home),
-    path('shop/', shop),
-    path('about/', about),
-    path('search/', search),
-    path('cart/', cart),
-    path('login/', login),
-    path('contact/', contact),
-    path('dashboard/', dashboard),
-    path('registration/', registration),
-    path('forget_password/', forget_password),
-    path('my_order/', order),
-    path('2nd_hand_product_buy_and_sell/', exchange),
-    path('save_payment_method/', payment),
-    path('Account_information/', Account),
-    path('settings/', settings),
-    path('smartphone/', smartphone),
-    path('computer/', computer),
-    path('accessories/', accessories),
-    path('smart_watch/', smart_watch),
+    path('', polls_views.home_page),
+    path('home/', polls_views.home_page),
+    path('shop/', polls_views.shop_page),
+    path('about/', polls_views.about_page),
+    path('search/', polls_views.search_page),
+    path('cart/', polls_views.cart_page),
+    path('login/', polls_views.login_page),
+    path('categories/', polls_views.categories),
+    path('contact/', polls_views.contact_page),
+    path('dashboard/', polls_views.dashboard_page),
+    path('registration/', polls_views.registration_page),
+    path('forget_password/', polls_views.forget_password),
+    path('order/', polls_views.order_page),
+    path('exchange/', polls_views.exchange_page),
+    path('payment/', polls_views.save_payment_method),
+    path('account/', polls_views.account_page),
 
 
-
- ]
+]
