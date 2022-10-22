@@ -1,6 +1,9 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 import polls.views as polls_views
+
+#from django.conf import settings
+#from django.conf.urls.static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
