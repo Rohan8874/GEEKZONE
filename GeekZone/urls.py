@@ -23,6 +23,10 @@ urlpatterns = [
     path('exchange/', polls_views.exchange_page),
     path('payment/', polls_views.save_payment_method),
     path('account/', polls_views.account_page),
+    path('smartphone/', polls_views.smartphone),
+    path('computer/', polls_views.computer),
+    path('accessories/', polls_views.accessories),
+    path('smart_watch/', polls_views.smart_watch),
 
 
 ]

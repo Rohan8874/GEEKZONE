@@ -33,3 +33,11 @@ def exchange_page(request):
     return render(request, 'exchange.html')
 def account_page(request):
     return render(request, 'account.html')
+def smartphone(request):
+    return render(request, 'smart_phone.html')
+def computer(request):
+    return render(request, 'computer.html')
+def accessories(request):
+    return render(request, 'accessories.html')
+def smart_watch(request):
+    return render(request, 'smart_watch.html')
