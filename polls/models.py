@@ -62,11 +62,6 @@ class Payment(models.Model):
     amount = models.FloatField()
 
 
-class Transaction_Report(models.Model):
-    report_id = models.IntegerField(primary_key=True)
-    payment = models.ForeignKey(Payment, on_delete=models.CASCADE)
-
-
 class Old_Product(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     seller = models.ForeignKey(Seller, on_delete=models.CASCADE)
