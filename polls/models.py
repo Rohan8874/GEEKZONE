@@ -14,22 +14,22 @@ class Customer(models.Model):
 
 class Categories(models.Model):
     categories_id = models.IntegerField(primary_key=True)
-    categories_name = models.CharField(max_length=25)
-    categories_type = models.CharField(max_length=25)
+    categories_name = models.CharField(max_length=125)
+    categories_type = models.CharField(max_length=125)
 
 
 class Delivery(models.Model):
     delivery_id = models.IntegerField(primary_key=True)
-    customer_id = models.ForeignKey(Customer, on_delete=models.CASCADE)
-    name = models.CharField(max_length=25)
-    address = models.CharField(max_length=25)
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+    address = models.CharField(max_length=100)
 
 
 class Product(models.Model):
     products_id = models.IntegerField(primary_key=True)
-    categories_id = models.ForeignKey(Categories, on_delete=models.CASCADE)
+    categories = models.ForeignKey(Categories, on_delete=models.CASCADE)
     stock = models.IntegerField()
-    name = models.CharField(max_length=25)
+    name = models.CharField(max_length=100)
     price = models.FloatField()
     image = models.ImageField()
     star = models.IntegerField()
@@ -37,17 +37,17 @@ class Product(models.Model):
 
 class Order(models.Model):
     order_id = models.IntegerField(primary_key=True)
-    customer_id = models.ForeignKey(Customer, on_delete=models.CASCADE)
-    product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
     amount = models.FloatField()
     date = models.IntegerField()
 
 
 class Seller(models.Model):
     seller_id = models.IntegerField(primary_key=True)
-    order_id = models.ForeignKey(Order, on_delete=models.CASCADE)
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    name = models.CharField(max_length=25)
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=125)
     phone_number = models.IntegerField()
     photo = models.ImageField()
     email_address = models.EmailField()
@@ -55,28 +55,30 @@ class Seller(models.Model):
 
 class Payment(models.Model):
     payment_id = models.IntegerField(primary_key=True)
-    order_id = models.ForeignKey(Order, on_delete=models.CASCADE)
-    customer_id = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    seller = models.ForeignKey(Seller, on_delete=models.CASCADE)
     payment_method = models.FloatField()
+    amount = models.FloatField()
 
 
 class Transaction_Report(models.Model):
     report_id = models.IntegerField(primary_key=True)
-    payment_id = models.ForeignKey(Payment, on_delete=models.CASCADE)
+    payment = models.ForeignKey(Payment, on_delete=models.CASCADE)
 
 
 class Old_Product(models.Model):
-    product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
-    seller_id = models.ForeignKey(Seller, on_delete=models.CASCADE)
-    customer_id = models.ForeignKey(Customer, on_delete=models.CASCADE)
-    categories_id = models.ForeignKey(Categories, on_delete=models.CASCADE)
-    name = models.CharField(max_length=25)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    seller = models.ForeignKey(Seller, on_delete=models.CASCADE)
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    categories = models.ForeignKey(Categories, on_delete=models.CASCADE)
+    name = models.CharField(max_length=125)
     image = models.ImageField()
 
 
 class Review(models.Model):
     review_id = models.IntegerField(primary_key=True)
-    product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
-    customer_id = models.ForeignKey(Customer, on_delete=models.CASCADE)
-    comment = models.CharField(max_length=25)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    comment = models.CharField(max_length=125)
     star = models.IntegerField()
