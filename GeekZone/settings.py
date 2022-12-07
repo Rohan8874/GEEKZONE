@@ -9,6 +9,7 @@ STATIC_DIR = os.path.join(BASE_DIR, 'static')
 
 
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
@@ -108,8 +109,7 @@ USE_TZ = True
 
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
-#MEDIA_URL = 'images'
+STATIC_URL = '/static/'
 
 STATICFILES_DIRS = []
 
@@ -117,5 +117,8 @@ STATICFILES_DIRS = []
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
 
 

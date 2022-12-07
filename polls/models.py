@@ -7,9 +7,9 @@ from django.contrib.auth.models import User
 
 class Customer(models.Model):
     customer_id = models.IntegerField(primary_key=True)
-    contact_address = models.IntegerField()
-    date = models.IntegerField()
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    contact_address = models.CharField(max_length=200, null=True)
+    date = models.DateTimeField(auto_now_add=True, null=True)
+    user = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
 
 
 class Categories(models.Model):
