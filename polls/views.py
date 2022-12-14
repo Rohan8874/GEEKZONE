@@ -14,19 +14,19 @@ from django.contrib import messages
 from .models import *
 from .forms import OrderForm, CreateUserFrom
 #from .filters import Orderfilter
-
+from polls.models import Contact
+from django.contrib import messages
 def home_page(request):
-    return render(request, 'home.html')
-def shop_page(request):
-    return render(request, 'shop.html')
+    return render(request, 'home2.html')
 def about_page(request):
+    messages.success(request, 'This is About')
     return render(request, 'about.html')
 def search_page(request):
     return render(request, 'search.html')
-def store(request, products=None):
+def shop(request, products=None):
     products = products.objects.all()
-    context = {'products':products}
-    return render(request, 'store.html', context)
+    context = {'products': products}
+    return render(request, 'shop.html', context)
 def cart_page(request):
     return render(request, 'cart.html')
 def login_page(request):
@@ -50,6 +50,16 @@ def logoutUser(request):
 def categories(request):
     return render(request, 'categories.html')
 def contact_page(request):
+    messages.success(request, 'Welcome to contact')
+    if request.method == 'POST':
+        name = request.POST['name']
+        email = request.POST['email']
+        phone = request.POST['phone']
+        content = request.POST['content']
+        print(name, email, phone, content)
+        contact = Contact(name=name, email=email, phone=phone, content=content)
+        contact.save()
+
     return render(request, 'contact.html')
 def dashboard_page(request):
     return render(request, 'dashboard.html')

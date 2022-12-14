@@ -2,10 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-     {% include 'base.html' %}
+    {% include 'base.html' %}
+    {% block custom_style %}
+    {% load static %}
+     <link rel="stylesheet" href="{% static '/css/about.css' %}">
+    {% endblock custom_style %}
     <title>Title</title>
 </head>
 <body>
+<div class="about-section">
+  <h1>About Us Page</h1>
+  <p>Some text about who we are and what we do.</p>
+  <p>Hello and welcome to GEEKZONE, the place to find the best Electronics for every taste and occasion. We thoroughly check the quality of our goods, working only with reliable suppliers so that you only receive the best quality product.
+
+We at GEEKZONE believe in high quality and exceptional customer service. But most importantly, we believe shopping is a right, not a luxury, so we strive to deliver the best products at the most affordable prices, and ship them to you regardless of where you are located.</p>
+</div>
+
+<h2 style="text-align:center">My team</h2>
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <img src="{% static '/img/pic.jpg' %} ">
+      <div class="container">
+        <h2>Md Shahnaouj Alam Rohan</h2>
+        <p class="title"></p>
+        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+        <p>20101092@uap-bd.edu</p>
+        <p><a harf="contact.html"><button class="button">Contact</button></a></p>
+      </div>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
